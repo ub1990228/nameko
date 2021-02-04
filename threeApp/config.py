@@ -1,3 +1,5 @@
+import logging
+
 class Config(object):
     LOG_LEVEL = logging.DEBUG
     

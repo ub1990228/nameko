@@ -9,11 +9,14 @@ class Login(Resource):
     @marshal_with(templates)
     def get(self):
         try:
-            template = {}
+            template = dict()
             result = request.get_json()
             if result['name'] == 'admin' and result['password'] == '123456':
-                return template['status'] = 1
+                template['status'] = 1
+                return template
             else:
-                return template['status'] = 0
+                template['status'] = 0
+                return template
         except:
-            return template['status'] = 0
+            template['status'] = 0
+            return template
