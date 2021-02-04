@@ -1,3 +1,27 @@
 {
-    "python.pythonPath": "env\\Scripts\\python.exe"
+    "files.exclude": {
+        "node_modules/":true,
+        "dist/":true,
+        "e2e/":true,
+        "**/*.md": true,
+        ".gitignore": true,
+        "**/.gitkeep":true,
+        ".editorconfig": true,
+        "**/polyfills.ts": true,
+        "**/main.ts": true,
+        "**/tsconfig.app.json": true,
+        "**/tsconfig.spec.json": true,
+        "**/tslint.json": true,
+        "**/karma.conf.js": true,
+        "**/favicon.ico": true,
+        "**/browserslist": true,
+        "**/test.ts": true,
+        "**/__pycache__": true,
+        "**/logs":true
+    },
+    "python.pythonPath": "env\\Scripts\\python.exe",
+    "python.autoComplete.extraPaths": [
+        "env\\Scripts\\Lib\\site-packages",
+        "env\\Scripts",
+    ]
 }
