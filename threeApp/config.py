@@ -2,7 +2,7 @@ import logging
 
 class Config(object):
     LOG_LEVEL = logging.DEBUG
-    
+    NAMEKO_AMQP_URI = 'amqp://192.168.2.215'
 
 class DevelopmentConfig(Config):
     """
@@ -28,7 +28,7 @@ class TestingConfig(Config):
 
 
 config = {
-    "development": DevelopmentConfig,
-    "production": ProductionConfig,
-    "testing": TestingConfig
+    'development': DevelopmentConfig,
+    'production': ProductionConfig,
+    'testing': TestingConfig
 }
