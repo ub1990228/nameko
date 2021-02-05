@@ -10,8 +10,8 @@ class Login(Resource):
     def get(self):
         try:
             template = dict()
-            result = request.get_json()
-            if result['name'] == 'admin' and result['password'] == '123456':
+            result = request.args
+            if result.get('name') == 'admin' and result.get('password') == '123456':
                 template['status'] = 1
                 return template
             else:
