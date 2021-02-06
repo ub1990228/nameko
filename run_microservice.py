@@ -1,6 +1,9 @@
 # nameko run UserService.service --broker amqp://guest:guest@192.168.2.215
+import eventlet 
+eventlet.monkey_patch()
 import importlib
 from pathlib import Path
+from UserService.service import UserService
 
 root = Path(__file__).parent
 
@@ -23,9 +26,10 @@ def run_all():
             runner.add_service(cls)
 
         runner.start()
+        runner.wait()
         # runner.stop()
     except Exception as e:
-        print(e)
+        runner.kill()
 
 if __name__ == '__main__':
     run_all()
