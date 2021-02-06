@@ -12,12 +12,15 @@ class Login(Resource):
         try:
             template = dict()
             result = request.args
-            if result.get('name') == 'admin' and result.get('password') == '123456':
+            
+            res = rpc.user_service.query(
+                name=result.get('name'), password=result.get('password'))
+            if res['code'] == 1:
                 template['status'] = 1
                 return template
             else:
                 template['status'] = 0
                 return template
-        except:
+        except Exception as e:
             template['status'] = 0
             return template

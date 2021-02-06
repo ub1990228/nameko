@@ -1,5 +1,5 @@
 from nameko.rpc import rpc
-# from UserService.dbhelper import DBHelper
+from .dbhelper import DBHelper
 
 '''
 用户服务
@@ -7,13 +7,18 @@ from nameko.rpc import rpc
 class UserService:
     name = 'user_service'
 
-    # def __init__(self):
-    #     # self.dbhelper = DBHelper()
-    #     # self.user = self.dbhelper.db.user
-    #     print('start')
+    def __init__(self):
+        self.dbhelper = DBHelper()
+        self.user = self.dbhelper.db
     
     @rpc
-    def query(self, name):
-        # result = self.user.find_one()
-        # return {"code": 0, "msg": "", 'data': result}
-        print(f'register{name}')
+    def query(self, name, password):
+        try:
+            admin = self.user['admin']
+            result = admin.find_one()
+            if name == result['name'] and password == result['password']:
+                return {'code': 1}
+            else:
+                return {'code': 0}
+        except:
+            return {'code': 0}
