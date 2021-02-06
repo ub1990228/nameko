@@ -14,7 +14,9 @@ class Login(Resource):
             result = request.args
             
             res = rpc.user_service.query(
-                name=result.get('name'), password=result.get('password'))
+                name=result.get('name'), 
+                password=result.get('password')
+            )
             if res['code'] == 1:
                 template['status'] = 1
                 return template
@@ -22,5 +24,6 @@ class Login(Resource):
                 template['status'] = 0
                 return template
         except Exception as e:
+            print(e)
             template['status'] = 0
             return template
