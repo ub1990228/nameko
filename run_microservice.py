@@ -1,6 +1,6 @@
 # nameko run UserService.service --broker amqp://guest:guest@192.168.2.215
 import eventlet 
-eventlet.monkey_patch()
+eventlet.monkey_patch() # 使用ServiceRunner启动需要显示增加，不知道为什么
 import importlib
 from pathlib import Path
 from UserService.service import UserService
