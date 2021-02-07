@@ -9,8 +9,8 @@ class Login(Resource):
 
     @marshal_with(templates)
     def get(self):
+        template = dict()
         try:
-            template = dict()
             result = request.args
             
             res = rpc.user_service.query(
