@@ -1,6 +1,7 @@
 import os,time
 from flask_restful import Resource, fields, marshal_with, reqparse
 from flask import request, abort
+from rpc import rpc
 
 
 class Upload(Resource):
@@ -20,6 +21,11 @@ class Upload(Resource):
             model_file.save(os.path.join(save_path, model_name))
             template['status'] = 1
             template['path'] = f'/static/model/{model_name}'
+            # data = {
+            #     name:model_name,
+            #     path:template['path']
+            # }
+            # rpc.model_service.save(data=data, type='stl')
             return template
         except Exception as e:
             template['status'] = 0
