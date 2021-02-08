@@ -15,8 +15,7 @@ class ModelService:
         try:
             if type == 'stl':
                 stl_model = self.model['stl']
-                model_dict = data
-                stl_model.insert_one(model_dict)
+                stl_model.insert_one(data)
                 return {'code': 1}
             elif type == 'obj':
                 return {'code': 0}

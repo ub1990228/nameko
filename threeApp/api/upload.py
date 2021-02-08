@@ -19,15 +19,25 @@ class Upload(Resource):
             now_time = str(int(time.time()))
             model_name = f'{now_time}_{model_file.filename}'
             model_file.save(os.path.join(save_path, model_name))
-            template['status'] = 1
-            template['path'] = f'/static/model/{model_name}'
-            # data = {
-            #     name:model_name,
-            #     path:template['path']
-            # }
-            # rpc.model_service.save(data=data, type='stl')
-            return template
+            if os.path.exists(os.path.join(save_path, model_name)):
+                model_path = f'/static/model/{model_name}'
+            data = {
+                'name': model_name,
+                'path': model_path
+            }
+            res = rpc.model_service.save(data=data, type='stl')
+            if res['code'] == 1:
+                template['status'] = 1
+                template['path'] = model_path
+                return template
+            else:
+                if os.path.exists(os.path.join(save_path, model_name)):
+                    os.remove(os.path.join(save_path, model_name))
+                template['status'] = 0
+                template['path'] = ''
+                return template
         except Exception as e:
+            print(e)
             template['status'] = 0
             template['path'] = ''
             return template
