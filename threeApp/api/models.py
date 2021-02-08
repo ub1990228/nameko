@@ -5,7 +5,8 @@ from rpc import rpc
 
 class Models(Resource):
     templates = {
-        'status': fields.Integer
+        'status': fields.Integer,
+        'data': fields.String
     }
 
     def get(self):

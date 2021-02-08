@@ -18,16 +18,18 @@ class ModelService:
                 stl_model.insert_one(data)
                 return {'code': 1}
             elif type == 'obj':
-                return {'code': 0}
+                stl_model = self.model['obj']
+                stl_model.insert_one(data)
+                return {'code': 1}
             else:
                 return {'code': 0}
         except:
             return {'code': 0}
 
     @rpc
-    def read(self):
+    def read(self, name):
         pass
     
     @rpc
-    def write(self):
+    def reads(self):
         pass
