@@ -25,9 +25,9 @@ class Upload(Resource):
                 'name': model_name,
                 'path': model_path
             }
-            if os.path.splitext(file)[-1][1:] == 'stl':
+            if os.path.splitext(model_name)[-1][1:] == 'stl':
                 res = rpc.model_service.save(data=data, type='stl')
-            elif os.path.splitext(file)[-1][1:] == 'obj':
+            elif os.path.splitext(model_name)[-1][1:] == 'obj':
                 res = rpc.model_service.save(data=data, type='obj')
             if res['code'] == 1:
                 template['status'] = 1
