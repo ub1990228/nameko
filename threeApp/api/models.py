@@ -24,7 +24,7 @@ class Models(Resource):
                 template['data'] = []
                 return template
         except:
-            template['status'] = 0
+            template['status'] = -1
             template['data'] = []
             return template
 
@@ -35,7 +35,7 @@ class Models(Resource):
             pass
         except Exception as e:
             print(e)
-            template['status'] = 0
+            template['status'] = -1
             template['data'] = []
             return template
 
@@ -65,6 +65,6 @@ class Models(Resource):
                 return template
         except Exception as e:
             print(e)
-            template['status'] = 0
-            template['data'] = []
+            template['status'] = -1
+            template['data'] = [str(e)]
             return template

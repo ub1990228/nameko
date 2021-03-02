@@ -17,4 +17,4 @@ app.register_blueprint(models_bp, url_prefix='/api')
 rpc.init_app(app)
 
 if __name__ == '__main__':
-    app.run(port='18888', debug=True)
+    app.run(port='18888', debug=True, host='0.0.0.0')

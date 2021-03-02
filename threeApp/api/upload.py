@@ -41,6 +41,6 @@ class Upload(Resource):
                 return template
         except Exception as e:
             print(e)
-            template['status'] = 0
-            template['path'] = ''
+            template['status'] = -1
+            template['path'] = str(e)
             return template
